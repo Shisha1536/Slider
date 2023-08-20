@@ -5,9 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/reset.css">
     <link rel="stylesheet" href="./styles/index_style.css">
-    <title>Document</title>
+    <title>Slider</title>
 </head>
 <body>
-    
+    <main>
+        <section class="section">
+            <div>
+                <div id="information">
+
+                </div>
+                <div class="slider">
+                    <img id="slide-1" src="./img/image 1.png" alt="">
+                    <img id="slide-2" src="./img/image 2.png" alt="">
+                    <img id="slide-3" src="./img/image 3.png" alt="">
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <script>
+        const image = Array.prototype.slice.call(document.getElementsByTagName("img"));
+        let list = document.createDocumentFragment();
+        image.forEach((element) => {
+            let item = document.createElement('a');
+            item.href = '#' + element.id;
+            item.innerHTML = "•";
+            list.append(item);
+        });
+        const inf = document.getElementById('information');
+        inf.append(list);
+    </script>
 </body>
 </html>
