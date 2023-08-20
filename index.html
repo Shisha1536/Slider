@@ -52,17 +52,6 @@
             </div>
         </section>
     </main>
-    <script>
-        const image = Array.prototype.slice.call(document.getElementsByTagName("img"));
-        let list = document.createDocumentFragment();
-        image.forEach((element) => {
-            let item = document.createElement('a');
-            item.href = '#' + element.id;
-            item.innerHTML = "•";
-            list.append(item);
-        });
-        const points = document.getElementById('points');
-        points.append(list);
-    </script>
+    <script src="./js/script.js"></script>
 </body>
 </html>
