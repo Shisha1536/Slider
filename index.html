@@ -10,58 +10,77 @@
 <body>
     <main>
         <section class="section">
-            <div class="section__group1">
-                <a class="section__group1_link" href="#slide-1">Rostov-on-Don, Admiral</a>
-                <a class="section__group1_link" href="#slide-2">Sochi Thieves</a>
-                <a class="section__group1_link" href="#slide-3">Rostov-on-Don Patriotic</a>
-            </div>
-            <div class="section__group2">
-                <div class="section__group2_information">
-                    <h2 class="information__h2">Completed projects</h2>
-                    <p class="information__p">Only a small part of the work performed by our company is presented on the site. For 14 years on in the construction market we have made happy more than 1000 families</p>
-                    <ul class="information__list-parameters">
-                        <li>
-                            <h3 class="information__subtitle">City:</h3>
-                            <span class="information__itemtext">Rostov-on-Don LCD admiral</span>
-                        </li>
-                        <li>
-                            <h3 class="information__subtitle">apartment area:</h3>
-                            <span class="information__itemtext">81 m2</span>
-                        </li>
-                        <li>
-                            <h3 class="information__subtitle">Repair time:</h3>
-                            <span class="information__itemtext">3.5 months</span>
-                        </li>
-                        <li>
-                            <h3 class="information__subtitle">Repair Cost:</h3>
-                            <span class="information__itemtext">Upon request</span>
-                        </li>
-                    </ul>
-                    <div class="information__switch">
-                        <button class="prev-button" aria-label="Посмотреть предыдущий слайд">&#10229;</button>
-                        <div id="points">
-                        </div>
-                        <button class="next-button" aria-label="Посмотреть следующий слайд">&#10230;</button>
-                    </div>
+            <div class="section__div">
+                <div class="section__group1">
+                    <a class="section__group1_link" href="#slide-1">Rostov-on-Don, Admiral</a>
+                    <a class="section__group1_link" href="#slide-2">Sochi Thieves</a>
+                    <a class="section__group1_link" href="#slide-3">Rostov-on-Don Patriotic</a>
                 </div>
-                <div class="section__group2_slider">
-                    <img id="slide-1" src="./img/image 1.png" alt="изображение комнаты">
-                    <img id="slide-2" src="./img/image 2.png" alt="изображение комнаты">
-                    <img id="slide-3" src="./img/image 3.png" alt="изображение комнаты">
+                <div class="section__group2">
+                    <div class="section__group2_information">
+                        <h2 class="information__h2">Completed <br>projects</h2>
+                        <p class="information__p">Only a small part of the work performed by our company is presented on the site. For 14 years on in the construction market we have made happy more than 1000 families</p>
+                        <ul class="information__list-parameters">
+                            <li>
+                                <h3 class="information__subtitle">City:</h3>
+                                <span class="information__itemtext">Rostov-on-Don LCD admiral</span>
+                            </li>
+                            <li>
+                                <h3 class="information__subtitle">apartment area:</h3>
+                                <span class="information__itemtext">81 m2</span>
+                            </li>
+                            <li>
+                                <h3 class="information__subtitle">Repair time:</h3>
+                                <span class="information__itemtext">3.5 months</span>
+                            </li>
+                            <li>
+                                <h3 class="information__subtitle">Repair Cost:</h3>
+                                <span class="information__itemtext">Upon request</span>
+                            </li>
+                        </ul>
+                        <div class="information__switch">
+                            <button class="prev-button" id="btnPrev" aria-label="Посмотреть предыдущий слайд">&#10229;</button>
+                            <div class="points" id="points">
+                            </div>
+                            <button class="next-button" id="btnNext" aria-label="Посмотреть следующий слайд">&#10230;</button>
+                        </div>
+                    </div>
+                    <div class="section__group2_slider-cont">
+                        <div  id="slider" class="section__group2_slider">
+                            <img id="slide-1" src="./img/image 1.png" alt="изображение комнаты">
+                            <img id="slide-2" src="./img/image 2.png" alt="изображение комнаты">
+                            <img id="slide-3" src="./img/image 3.png" alt="изображение комнаты">
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
     <script>
-        const image = Array.prototype.slice.call(document.getElementsByTagName("img"));
-        
+        const slider = document.querySelector('#slider');
+        const image = slider.children;
+        const btnNext = document.querySelector('#btnNext');
         let list = document.getElementById('points');
-        image.forEach((element) => {
+        Array.from(image).forEach((element, index) => {
+            if (index !== 0) element.classList.add('hidden');
+            image[0].setAttribute('data-active', '');
+            element.dataset.index = index;
             let item = document.createElement('a');
             item.href = '#' + element.id;
+            item.className = "points-item"
             item.innerHTML = "•";
             list.append(item);
         });
+        btnNext.onclick = function () {
+            const currenSlide = slider.querySelector('[data-active]');
+            const currenSlideIndex = +currenSlide.dataset.index;
+            currenSlide.classList.add('hidden');
+            currenSlide.removeAttribute('data-active');
+            const nextSlideIndex = currenSlideIndex + 1 === image.length ? 0 : currenSlideIndex + 1;
+            const nextSlide = slider.querySelector(`[data-index="${nextSlideIndex}"]`);
+            nextSlide.classList.remove('hidden');
+            nextSlide.setAttribute('data-active', '');
+        }
     </script>
 </body>
 </html>
