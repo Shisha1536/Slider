@@ -62,6 +62,7 @@
         const image = slider.children;
         const btnNext = document.querySelector('#btnNext');
         const btnPrev = document.querySelector('#btnPrev');
+        const listParam = document.getElementsByClassName("information__itemtext");
         let list = document.getElementById('points');
         Array.from(image).forEach((element, index) => {
             if (index !== 0) element.classList.add('hidden');
@@ -96,6 +97,22 @@
             nextLinkHotel.style.textDecoration = "underline";
             nextSlide.classList.remove('hidden');
             nextSlide.setAttribute('data-active', '');
+            if (nextSlideIndex === 0) {
+                listParam[0].textContent = "Rostov-on-Don LCD admiral";
+                listParam[1].textContent = "81 m2";
+                listParam[2].textContent = "3.5 months";
+                listParam[3].textContent = "Upon request";                  
+            } else if (nextSlideIndex === 1) {
+                listParam[0].textContent = "Sochi Thieves";
+                listParam[1].textContent = "105 m2";
+                listParam[2].textContent = "4 months";
+                listParam[3].textContent = "Upon request";
+            } else if (nextSlideIndex === 2) {
+                listParam[0].textContent = "Rostov-on-Don Patriotic";
+                listParam[1].textContent = "93 m2";
+                listParam[2].textContent = "3 months";
+                listParam[3].textContent = "Upon request";
+            }
         }
         btnPrev.onclick = function () {
             const currentSlide = slider.querySelector('[data-active]');
@@ -116,6 +133,22 @@
             prevLinkHotel.style.textDecoration = "underline";
             prevSlide.classList.remove('hidden');
             prevSlide.setAttribute('data-active', '');
+            if (prevSlideIndex === 0) {
+                listParam[0].textContent = "Rostov-on-Don LCD admiral";
+                listParam[1].textContent = "81 m2";
+                listParam[2].textContent = "3.5 months";
+                listParam[3].textContent = "Upon request";                  
+            } else if (prevSlideIndex === 1) {
+                listParam[0].textContent = "Sochi Thieves";
+                listParam[1].textContent = "105 m2";
+                listParam[2].textContent = "4 months";
+                listParam[3].textContent = "Upon request";
+            } else if (prevSlideIndex === 2) {
+                listParam[0].textContent = "Rostov-on-Don Patriotic";
+                listParam[1].textContent = "93 m2";
+                listParam[2].textContent = "3 months";
+                listParam[3].textContent = "Upon request";
+            }
         }
         let selectedLink;
         group1.onclick = function (event) {
@@ -136,6 +169,22 @@
             slide.classList.remove('hidden');
             slide.setAttribute('data-active', '');
             point.style.color = "#FFF";
+            if (+targetDataIndex === 0) {
+                listParam[0].textContent = "Rostov-on-Don LCD admiral";
+                listParam[1].textContent = "81 m2";
+                listParam[2].textContent = "3.5 months";
+                listParam[3].textContent = "Upon request";                  
+            } else if (+targetDataIndex === 1) {
+                listParam[0].textContent = "Sochi Thieves";
+                listParam[1].textContent = "105 m2";
+                listParam[2].textContent = "4 months";
+                listParam[3].textContent = "Upon request";
+            } else if (+targetDataIndex === 2) {
+                listParam[0].textContent = "Rostov-on-Don Patriotic";
+                listParam[1].textContent = "93 m2";
+                listParam[2].textContent = "3 months";
+                listParam[3].textContent = "Upon request";
+            }
         }
         list.onclick = function (event) {
             let target = event.target;
@@ -155,6 +204,22 @@
             slide.classList.remove('hidden');
             slide.setAttribute('data-active', '');
             target.style.color = "#FFF";
+            if (+targetDataIndex === 0) {
+                listParam[0].textContent = "Rostov-on-Don LCD admiral";
+                listParam[1].textContent = "81 m2";
+                listParam[2].textContent = "3.5 months";
+                listParam[3].textContent = "Upon request";                  
+            } else if (+targetDataIndex === 1) {
+                listParam[0].textContent = "Sochi Thieves";
+                listParam[1].textContent = "105 m2";
+                listParam[2].textContent = "4 months";
+                listParam[3].textContent = "Upon request";
+            } else if (+targetDataIndex === 2) {
+                listParam[0].textContent = "Rostov-on-Don Patriotic";
+                listParam[1].textContent = "93 m2";
+                listParam[2].textContent = "3 months";
+                listParam[3].textContent = "Upon request";
+            }
         }
     </script>
 </body>
