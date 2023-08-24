@@ -12,9 +12,9 @@
         <section class="section">
             <div class="section__div">
                 <div class="section__group1">
-                    <a class="section__group1_link" href="#slide-1">Rostov-on-Don, Admiral</a>
-                    <a class="section__group1_link" href="#slide-2">Sochi Thieves</a>
-                    <a class="section__group1_link" href="#slide-3">Rostov-on-Don Patriotic</a>
+                    <a class="section__group1_link" href="#" data-index="0">Rostov-on-Don, Admiral</a>
+                    <a class="section__group1_link" href="#" data-index="1">Sochi Thieves</a>
+                    <a class="section__group1_link" href="#" data-index="2">Rostov-on-Don Patriotic</a>
                 </div>
                 <div class="section__group2">
                     <div class="section__group2_information">
@@ -58,28 +58,103 @@
     </main>
     <script>
         const slider = document.querySelector('#slider');
+        const group1 = document.querySelector(".section__group1");
         const image = slider.children;
         const btnNext = document.querySelector('#btnNext');
+        const btnPrev = document.querySelector('#btnPrev');
         let list = document.getElementById('points');
         Array.from(image).forEach((element, index) => {
             if (index !== 0) element.classList.add('hidden');
             image[0].setAttribute('data-active', '');
             element.dataset.index = index;
             let item = document.createElement('a');
-            item.href = '#' + element.id;
+            item.dataset.index = index;
             item.className = "points-item"
+            item.href = "#"
             item.innerHTML = "•";
             list.append(item);
         });
+        group1.children[0].style.color = "#E3B873";
+        group1.children[0].style.textDecoration = "underline";
+        list.children[0].style.color = "#FFF";
         btnNext.onclick = function () {
-            const currenSlide = slider.querySelector('[data-active]');
-            const currenSlideIndex = +currenSlide.dataset.index;
-            currenSlide.classList.add('hidden');
-            currenSlide.removeAttribute('data-active');
-            const nextSlideIndex = currenSlideIndex + 1 === image.length ? 0 : currenSlideIndex + 1;
+            const currentSlide = slider.querySelector('[data-active]');
+            const currentLinkHotel = group1.querySelector(`[data-index="${+currentSlide.dataset.index}"]`);
+            const currentPoint = list.querySelector(`[data-index="${+currentSlide.dataset.index}"]`);
+            currentPoint.style.color = "#ffffff4d";
+            currentLinkHotel.style.color = "#ffffff4d";
+            currentLinkHotel.style.textDecoration = "none";
+            const currentSlideIndex = +currentSlide.dataset.index;
+            currentSlide.classList.add('hidden');
+            currentSlide.removeAttribute('data-active');
+            const nextSlideIndex = currentSlideIndex + 1 === image.length ? 0 : currentSlideIndex + 1;
             const nextSlide = slider.querySelector(`[data-index="${nextSlideIndex}"]`);
+            const nextLinkHotel = group1.querySelector(`[data-index="${nextSlideIndex}"]`);
+            const nextPoint = list.querySelector(`[data-index="${nextSlideIndex}"]`);
+            nextPoint.style.color = "#FFF";
+            nextLinkHotel.style.color = "#E3B873";
+            nextLinkHotel.style.textDecoration = "underline";
             nextSlide.classList.remove('hidden');
             nextSlide.setAttribute('data-active', '');
+        }
+        btnPrev.onclick = function () {
+            const currentSlide = slider.querySelector('[data-active]');
+            const currentLinkHotel = group1.querySelector(`[data-index="${+currentSlide.dataset.index}"]`);
+            const currenPoint = list.querySelector(`[data-index="${+currentSlide.dataset.index}"]`);
+            currenPoint.style.color = "#ffffff4d";
+            currentLinkHotel.style.color = "#ffffff4d";
+            currentLinkHotel.style.textDecoration = "none";
+            const currentSlideIndex = +currentSlide.dataset.index;
+            currentSlide.classList.add('hidden');
+            currentSlide.removeAttribute('data-active');
+            const prevSlideIndex = currentSlideIndex - 1 < 0 ? image.length - 1 : currentSlideIndex - 1;
+            const prevSlide = slider.querySelector(`[data-index="${prevSlideIndex}"]`);
+            const prevLinkHotel = group1.querySelector(`[data-index="${prevSlideIndex}"]`);
+            const prevPoint = list.querySelector(`[data-index="${prevSlideIndex}"]`);
+            prevPoint.style.color = "#FFF";
+            prevLinkHotel.style.color = "#E3B873";
+            prevLinkHotel.style.textDecoration = "underline";
+            prevSlide.classList.remove('hidden');
+            prevSlide.setAttribute('data-active', '');
+        }
+        let selectedLink;
+        group1.onclick = function (event) {
+            let target = event.target;
+            const targetDataIndex = target.dataset.index;
+            const currentSlide = slider.querySelector('[data-active]');
+            const slide = slider.querySelector(`[data-index="${targetDataIndex}"]`);
+            const point = list.querySelector(`[data-index="${targetDataIndex}"]`);
+            const listA = document.getElementsByTagName("a");
+            Array.from(listA).forEach((element) => {
+                element.style.color = "#ffffff4d";
+                element.style.textDecoration = "none";
+            });
+            target.style.color = "#E3B873";
+            target.style.textDecoration = "underline";
+            currentSlide.classList.add('hidden');
+            currentSlide.removeAttribute('data-active');
+            slide.classList.remove('hidden');
+            slide.setAttribute('data-active', '');
+            point.style.color = "#FFF";
+        }
+        list.onclick = function (event) {
+            let target = event.target;
+            const targetDataIndex = target.dataset.index;
+            const currentSlide = slider.querySelector('[data-active]');
+            const slide = slider.querySelector(`[data-index="${targetDataIndex}"]`);
+            const linkHotel = group1.querySelector(`[data-index="${targetDataIndex}"]`);
+            const listA = document.getElementsByTagName("a");
+            Array.from(listA).forEach((element) => {
+                element.style.color = "#ffffff4d";
+                element.style.textDecoration = "none";
+            });
+            linkHotel.style.color = "#E3B873";
+            linkHotel.style.textDecoration = "underline";
+            currentSlide.classList.add('hidden');
+            currentSlide.removeAttribute('data-active');
+            slide.classList.remove('hidden');
+            slide.setAttribute('data-active', '');
+            target.style.color = "#FFF";
         }
     </script>
 </body>

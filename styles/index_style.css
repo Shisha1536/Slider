@@ -39,7 +39,7 @@ h2,h3,a {
 }
 .section__group1_link {
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.30);
+    color: #ffffff4d;
     font-size: 14px;
     line-height: 138.6%;
 }
@@ -101,7 +101,7 @@ h2,h3,a {
 }
 .points-item {
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.30);
+    color: #ffffff4d;
     font-size: 22px;
 }
 .points-item:hover {
@@ -111,7 +111,7 @@ h2,h3,a {
 .next-button {
     border: none;
     background: none;
-    color: rgba(255, 255, 255, 0.30);
+    color: #ffffff4d;
     font-size: 22px;
 }
 .prev-button:hover {
