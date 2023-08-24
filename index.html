@@ -153,6 +153,7 @@
         let selectedLink;
         group1.onclick = function (event) {
             let target = event.target;
+            if (target.tagName != 'A') return;
             const targetDataIndex = target.dataset.index;
             const currentSlide = slider.querySelector('[data-active]');
             const slide = slider.querySelector(`[data-index="${targetDataIndex}"]`);
@@ -188,6 +189,7 @@
         }
         list.onclick = function (event) {
             let target = event.target;
+            if (target.tagName != 'A') return;
             const targetDataIndex = target.dataset.index;
             const currentSlide = slider.querySelector('[data-active]');
             const slide = slider.querySelector(`[data-index="${targetDataIndex}"]`);
